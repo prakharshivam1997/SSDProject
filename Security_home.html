@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vlab : Product quality</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+a{
+text-decoration:none;
+}
+.card{
+   transition: transform .2s;
+
+}
+.card:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1); 
+}
+</style>
+</head>
+
+
+
+<body id="myPage">
+
+
+
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="images/demo/security_img.jpg" alt="boat" style="width:100%;min-height:350px;max-height:450px;">
+  <div class="w3-container w3-display-bottomleft w3-margin-bottom">  
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-xlarge w3-theme w3-hover-teal" title="Go To W3.CSS">LEARN about Software code security</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-top">
+    <header class="w3-container w3-teal w3-display-container"> 
+      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-display-topright"><i class="fa fa-remove"></i></span>
+      <h4>Welcome to Vlabs </h4>
+      <h5>Here to learn <i class="fa fa-smile-o"></i></h5>
+    </header>
+    <div class="w3-container">
+      <p>The enterprise today is under attack from criminal hackers and other malicious threats. As the enterprise network has become more secure, attackers have turned their attention to the application layer, which now contains 90 percent of all vulnerabilities, according to Gartner. To protect the enterprise, security administrators must perform detailed software code security analysis when developing or buying software. Yet such software code security analysis can be extremely costly—on-premises software solutions are expensive to purchase, deploy and maintain, and they can easily impair development timelines to the point where speed-to-market is compromised.</p>
+    </div>
+    <footer class="w3-container w3-teal">
+      <p>We wish you a happy learning!</p>
+    </footer>
+  </div>
+</div>
+
+
+<!-- Work Row -->
+<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+<div class="w3-quarter">
+<h2>Software code security</h2>
+<p>Secure coding is the practice of developing computer software in a way that guards against the accidental introduction of security vulnerabilities.</p>
+</div>
+
+<div class="w3-quarter card">
+<div class="w3-card w3-white">
+  <a href="CSRF_tutorial.html"><img height="220" src="images/demo/csrf_img.jpg" alt="security_img" style="width:100%"></a>
+  <div class="w3-container">
+  <a href="CSRF_tutorial.html"><h3>Cross-Site Request Forgery</h3></a>
+  <p> The concept of XSS is to manipulate client-side scripts of a web application to execute in the manner desired by the malicious user.</p>
+  </div>
+  </div>
+</div>
+
+<div class="w3-quarter card">
+<div class="w3-card w3-white">
+  <a href="cyclomatic_tutorial.html"><img  height="220" src="images/demo/sql_injection_img.jpg" alt="complexity_img" style="width:100%"></a>
+  <div class="w3-container">
+  <a href="cyclomatic_tutorial.html"><h3>SQL injection</h3></a>
+  <p>SQL injection (SQLi) is an application security weakness that allows attackers to control an application’s database by tricking the application into sending unexpected SQL commands.</p>
+  </div>
+  </div>
+</div>
+
+<div class="w3-quarter card">
+<div class="w3-card w3-white">
+  <a href="cyclomatic_tutorial.html"><img  height="220" src="images/demo/mobile_security_img.png" alt="complexity_img" style="width:100%"></a>
+  <div class="w3-container">
+  <a href="cyclomatic_tutorial.html"><h3>Mobile Security</h3></a>
+  <p>Increasing smartphone adoption rates coupled with the rapid growth in smartphone application counts have created a scenario where private and sensitive information is being pushed to the new device perimeter at an alarming rate.</p>
+  </div>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <h4>Follow Us</h4>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
+  <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <p></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+<script>
+// Script for side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "300px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

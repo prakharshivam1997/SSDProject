@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<title>Vlab - Product quality </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  float:right;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button1:hover {
+  background-color: #008CBA;
+  color: white;
+}
+</style>
+<body class="w3-content" style="background-color:powderblue; max-width:1200px">
+<h1 style="margin-left: 700px;">Tutorial</h1>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="mySidebar">
+  <div class="w3-container w3-display-container w3-padding-16">
+    <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+    <h3 class="w3-wide"><b>Security</b></h3>
+    <div class="containerx">
+      <h4>Progress Bar</h4>
+      <div class="progress">
+        <div id="progress-bar1" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+          <p id="progress-text">0%</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    <a onclick="myAccFunc()" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align" id="myBtn">
+		CSRF<i class="fa fa-caret-down"></i>
+    </a>
+    <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+      <a href="#" class="w3-bar-item w3-button">Introduction</a>
+      <div id="scroll-div1" class="w3-bar-item w3-button">Understanding CSRF</div>
+      <div id="scroll-div2" class="w3-bar-item w3-button">Demonstration CSRF</div>
+      <div id="scroll-div3" class="w3-bar-item w3-button">Prevention from CSRF</div>
+      <div id="scroll-div4" class="w3-bar-item w3-button">Evaluation</div>
+    </div>
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<h1>Start</h1>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:250px;margin-top: 100;">
+
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+  
+  <!-- Top header -->
+  <header class="w3-container w3-xlarge">
+    <p class="w3-left">Video Tutorial</p>
+  </header>
+  <!-- Image header -->
+
+    <div class="w3-display-container w3-container">
+	  <iframe width="930" height="500" src="https://www.youtube.com/embed/eWEgUcHPle0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  </iframe>
+    </div>
+  </div>
+<button id="button-to-complete" class="button button1">Complete</button>
+<button id="button-for-scroll" class="button button1">next</button>
+<div id="text1" style="margin-top: 430px;margin-left: 230px;padding-left: 50px;">
+  <h3>Introduction</h3>
+    <p>Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they’re currently authenticated. With a little help of social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker’s choosing. If the victim is a normal user, a successful CSRF attack can force the user to perform state changing requests like transferring funds, changing their email address, and so forth. If the victim is an administrative account, CSRF can compromise the entire web application. </p>
+  <h3>Description</h3>
+    <p>
+      CSRF is an attack that tricks the victim into submitting a malicious request. It inherits the identity and privileges of the victim to perform an undesired function on the victim’s behalf. For most sites, browser requests automatically include any credentials associated with the site, such as the user’s session cookie, IP address, Windows domain credentials, and so forth. Therefore, if the user is currently authenticated to the site, the site will have no way to distinguish between the forged request sent by the victim and a legitimate request sent by the victim.
+      
+      CSRF attacks target functionality that causes a state change on the server, such as changing the victim’s email address or password, or purchasing something. Forcing the victim to retrieve data doesn’t benefit an attacker because the attacker doesn’t receive the response, the victim does. As such, CSRF attacks target state-changing requests.
+      
+      It’s sometimes possible to store the CSRF attack on the vulnerable site itself. Such vulnerabilities are called “stored CSRF flaws”. This can be accomplished by simply storing an IMG or IFRAME tag in a field that accepts HTML, or by a more complex cross-site scripting attack. If the attack can store a CSRF attack in the site, the severity of the attack is amplified. In particular, the likelihood is increased because the victim is more likely to view the page containing the attack than some random page on the Internet. The likelihood is also increased because the victim is sure to be authenticated to the site already.</p>
+  <h3>Charateristics</h3>
+    <p>In a CSRF attack, the attacker's goal is to cause an innocent victim to unknowingly submit a maliciously crafted web request to a website that the victim has privileged access to. This web request can be crafted to include URL parameters, cookies and other data that appear normal to the web server processing the request. At risk are web applications that perform actions based on input from trusted and authenticated users without requiring the user to authorize the specific action. A user who is authenticated by a cookie saved in the user's web browser could unknowingly send an HTTP request to a site that trusts the user and thereby causes an unwanted action.
+
+        A general property of web browsers is that they will automatically and invisibly include any cookies used by a given domain in any web request sent to that domain. This property is exploited by CSRF attacks in that any web request made by a browser will automatically include any cookies (including session cookies and others) created when a victim logs into a website. In the event that a user is tricked into inadvertently submitting a request through their browser these automatically included cookies will cause the forged request to appear real to the web server and it will perform any appropriately requested actions including returning data, manipulating session state, or making changes to the victim's account.
+        
+        In order for a CSRF attack to work, an attacker must identify a reproducible web request that executes a specific action such as changing an account password on the target page. Once such a request is identified, a link can be created that generates this malicious request and that link can be embedded on a page within the attacker's control.[1][3] This link may be placed in such a way that it is not even necessary for the victim to click the link. For example, it may be embedded within an html image tag on an email sent to the victim which will automatically be loaded when the victim opens their email. Once the victim has clicked the link, their browser will automatically include any cookies used by that website and submit the request to the web server. The web server will not be able to identify the forgery because the request was made by a user that was logged in, and submitted all the requisite cookies.
+        
+        Cross-site request forgery is an example of a confused deputy attack against a web browser because the web browser is tricked into submitting a forged request by a less privileged attacker. </p>
+</div>
+<button id="button-to-complete1" class="button button1">Complete</button>
+<div id="video-div2" class="w3-main" style="margin-left:250px;margin-top: 300px;">
+
+    <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:13px"></div>
+    
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+      <p class="w3-left">CSRF Demonstration</p>
+    </header>
+    <!-- Image header -->
+  
+  <div class="w3-display-container w3-container">
+    <iframe width="930" height="500" src="https://www.youtube.com/embed/5joX1skQtVE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+    </iframe>
+  </div>
+  <button id="button-to-complete2" class="button button1">Complete</button>
+</div>
+
+################### last text
+<div id="text2" class="w3-main" style="margin-left:250px;margin-top: 400px;">
+
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+  
+  <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+      <p class="w3-left">Preventiopn from CSRF</p>
+    </header>
+    <div style="margin-left: 20px;">
+      <p>An attacker can launch a CSRF attack when he knows which parameters and value combination are being used in a form. Therefore, by adding an additional parameter with a value that is unknown to the attacker and can be validated by the server, you can prevent CSRF attacks. Below is a list of some of the methods you can use to block cross-site request forgery attacks.</p>
+      <h3>Implement an Anti-CSRF Token</h3>
+        <p>An anti-CSRF token is a type of server-side CSRF protection. It is a random string that is only known to the user’s browser and the web application. The anti-CSRF token is usually stored inside a session variable. On a page, it is typically in a hidden field that is sent with the request.
+          If the values of the session variable and the hidden form field match, the web application accepts the request. If they do not match, the request is dropped. In this case, the attacker does not know the exact value of the hidden form field that is needed for the request to be accepted, so he cannot launch a CSRF attack. In fact, due to same origin policy, the attacker can’t even read the response that contains the token.</p>
+      <h3>Use the SameSite Flag in Cookies</h3>
+          <p>The SameSite flag in cookies is a relatively new method of preventing CSRF attacks and improving web application security. In the above scenario, we saw that https://attacker.com/ could send a POST request to https://example.com/ together with a session cookie. This session cookie is unique for every user, so the web application uses it to distinguish users and to determine if they are logged in.
+
+          If the session cookie is marked as a SameSite cookie, it is only sent along with requests that originate from the same domain. Therefore, when https://example.com/index.php wants to make a POST request to https://example.com/post_comment.php, it is allowed. However, https://attacker.com/ can’t send POST requests to https://example.com/post_comment.php, since the session cookie originates from a different domain, so it is not sent along with the request.</p>
+    </div>
+
+  <button id="button-to-complete3" class="button button1">Complete</button>
+  <div id="visible-div" style="margin-left: 230px;margin-top: 100px;visibility: hidden;">
+    <p style="color: #119416;font-size: 20px;">Congratulations for completing Tutorial</p>
+  </div>
+  <div style="margin-top: 200px;"></div>
+  
+</div>
+
+<script>
+  var progress_val=0
+  flag1=0
+  flag2=0
+  flag3=0
+  flag4=0
+// Accordion 
+function myAccFunc() {
+  var x = document.getElementById("demoAcc");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// Click on the "Jeans" link on page load to open the accordion for demo purposes
+document.getElementById("myBtn").click();
+
+
+// Open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+$("#button-for-scroll").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#text1").offset().top
+    }, 2000);
+});
+$("#scroll-div1").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#text1").offset().top
+    }, 2000);
+});
+$("#scroll-div2").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#video-div2").offset().top
+    }, 2000);
+});
+$("#scroll-div3").click(function() {
+  $('html, body').animate({
+        scrollTop: $("#text2").offset().top
+    }, 2000);
+});
+$("#scroll-div4").click(function() {
+  if(progress_val<3)
+  {
+    alert("Complete Tutorial then proceed for evaluation");
+  }
+  else
+  {
+    window.location.href = "./eval1.html";
+  }
+});
+
+$("#button-to-complete1").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#video-div2").offset().top
+    }, 2000);
+});
+$("#button-to-complete2").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#text2").offset().top
+    }, 2000);
+});
+$("#button-to-complete").click(function() {
+  if(flag1==0)
+  {
+    progress_val++
+  }
+  
+  if(progress_val==1)
+  {
+    if(flag1==0)
+    {
+      document.getElementById("progress-bar1").style.width="25%"
+      document.getElementById("progress-text").textContent="25%"
+    }
+    flag1=1
+    //break
+  }
+  if(progress_val==2)
+  {
+    if(flag2==0)
+    {  
+      document.getElementById("progress-bar1").style.width="50%"
+      document.getElementById("progress-text").textContent="50%"
+    }
+    flag1=1
+    //break
+  }
+  if(progress_val==3)
+  {
+    if(flag1==0)
+    {
+      document.getElementById("progress-bar1").style.width="75%"
+      document.getElementById("progress-text").textContent="75%"
+    }
+    flag1=1
+  }
+  if(progress_val==4)
+  {
+    if(flag1==0)
+    {
+      document.getElementById("progress-bar1").style.width="100%"
+      document.getElementById("progress-text").textContent="100%"
+    }
+    flag1=1
+  }
+  if(progress_val==4)
+  {
+    document.getElementById("visible-div").style.visibility="visible"
+  }
+});
+$("#button-to-complete1").click(function() {
+  if((flag2==0))
+  {
+    progress_val++
+  }
+  if(progress_val==1)
+  {
+    if(flag2==0)
+    {
+      document.getElementById("progress-bar1").style.width="25%"
+      document.getElementById("progress-text").textContent="25%"
+    }
+    flag2=1
+    //break
+  }
+  if(progress_val==2)
+  {
+    if(flag2==0)
+    {  
+      document.getElementById("progress-bar1").style.width="50%"
+      document.getElementById("progress-text").textContent="50%"
+    }
+    flag2=1
+    //break
+  }
+  if(progress_val==3)
+  {
+    if(flag2==0)
+    {
+      document.getElementById("progress-bar1").style.width="75%"
+      document.getElementById("progress-text").textContent="75%"
+    }
+    flag2=1
+  }
+  if(progress_val==4)
+  {
+    if(flag2==0)
+    {
+      document.getElementById("progress-bar1").style.width="100%"
+      document.getElementById("progress-text").textContent="100%"
+    }
+    flag2=1
+  }
+  if(progress_val==4)
+  {
+    document.getElementById("visible-div").style.visibility="visible"
+  }
+});
+$("#button-to-complete2").click(function() {
+  if(flag3==0)
+  {
+    progress_val++
+  }
+  if(progress_val==1)
+  {
+    if(flag3==0)
+    {
+      document.getElementById("progress-bar1").style.width="25%"
+      document.getElementById("progress-text").textContent="25%"
+    }
+    flag3=1
+    //break
+  }
+  if(progress_val==2)
+  {
+    if(flag3==0)
+    {  
+      document.getElementById("progress-bar1").style.width="50%"
+      document.getElementById("progress-text").textContent="50%"
+    }
+    flag3=1
+    //break
+  }
+  if(progress_val==3)
+  {
+    if(flag3==0)
+    {
+      document.getElementById("progress-bar1").style.width="75%"
+      document.getElementById("progress-text").textContent="75%"
+    }
+    flag3=1
+  }
+  if(progress_val==4)
+  {
+    if(flag3==0)
+    {
+      document.getElementById("progress-bar1").style.width="100%"
+      document.getElementById("progress-text").textContent="100%"
+    }
+    flag3=1
+  }
+  if(progress_val==4)
+  {
+    document.getElementById("visible-div").style.visibility="visible"
+  }
+});
+$("#button-to-complete3").click(function() {
+  if(flag4==0)
+  {
+    progress_val++
+  }
+  if(progress_val==1)
+  {
+    if(flag4==0)
+    {
+      document.getElementById("progress-bar1").style.width="25%"
+      document.getElementById("progress-text").textContent="25%"
+    }
+    flag4=1
+    //break
+  }
+  if(progress_val==2)
+  {
+    if(flag4==0)
+    {  
+      document.getElementById("progress-bar1").style.width="50%"
+      document.getElementById("progress-text").textContent="50%"
+    }
+    flag4=1
+    //break
+  }
+  if(progress_val==3)
+  {
+    if(flag4==0)
+    {
+      document.getElementById("progress-bar1").style.width="75%"
+      document.getElementById("progress-text").textContent="75%"
+    }
+    flag4=1
+  }
+  if(progress_val==4)
+  {
+    if(flag4==0)
+    {
+      document.getElementById("progress-bar1").style.width="100%"
+      document.getElementById("progress-text").textContent="100%"
+    }
+    flag4=1
+  }
+  if(progress_val==4)
+  {
+    document.getElementById("visible-div").style.visibility="visible"
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: red;
+  color: white;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 500px;
+  height: 600px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  color: white;
+  transform: rotateY(180deg);
+}
+
+h3{
+  padding:1vw;
+}
+</style>
+
+</head>
+<body>
+<div class="topnav">
+  <a href="index2.html">INTRODUCTION</a>
+  <a href="cyclomatic_theory.html">THEORY</a>
+  <a class="active" href="cyclo_sim.html">SIMULATION</a>
+</div>
+
+<h3>Given below are two codes which show how cyclomatic complexity changes along with the way we write our code. Try to draw the flow graph of the codes given before proceeding. When you are done, simply hover mouse over the mouse over the code to see the flow graph of that code.
+<br><br>
+You can also click on the button below each code to see solution.
+</h3>
+
+<br>
+<center>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="images/demo/code1.jpeg" alt="code2" style="width:500px;height:600px;">	
+    </div>
+    <div class="flip-card-back">
+      <img src="images/demo/graph1.jpeg" alt="graph1" style="width:500px;height:600px;">
+    </div>
+  </div>
+</div>
+<br>
+Enter number of vertices in flow graph: <input type="number" id="vertexin1" value=0>
+<button onclick="checkvertex1()">Check</button>
+<h3 id="vertexchk1"></h3>
+
+Enter number of edges in flow graph: <input type="number" id="edgein1" value=0>
+<button onclick="checkedge1()">Check</button>
+<h3 id="edgechk1"></h3>
+<button onclick="sol1()">Solution</button>
+<div id="solution1" class="solution" style="display:none">
+<p>Cyclomatic Complexity= E-N+2&timesP</p>
+<p>Number of edges(E)=23</p>
+<p>Number of nodes(N)=17</p>
+<p>Number of connected components=1</p>
+<p>Cyclomatic Complexity= 23-17+1&times2= 8</p>
+</div>
+</center>
+
+<br><br>
+
+<center>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="images/demo/code2.jpeg" alt="code2" style="width:500px;height:600px;"> 
+    </div>
+    <div class="flip-card-back">
+      <img src="images/demo/graph2.jpeg" alt="graph2" style="width:500px;height:500px;">
+    </div>
+  </div>
+</div>
+<br>
+Enter number of vertices in flow graph: <input type="number" id="vertexin2" value=0>
+<button onclick="checkvertex2()">Check</button>
+<h3 id="vertexchk2"></h3>
+Enter number of edges in flow graph: <input type="number" id="edgein2" value=0>
+<button onclick="checkedge2()">Check</button>
+<h3 id="edgechk2"></h3>
+<button onclick="sol2()">Solution</button>
+<div id="solution2" class="solution" style="display:none">
+<p>Cyclomatic Complexity= E-N+2&timesP</p>
+<p>Number of edges(E)=8</p>
+<p>Number of nodes(N)=7</p>
+<p>Number of connected components=1</p>
+<p>Cyclomatic Complexity= 8-7+1&times2= 3</p>
+</div>
+</center>
+<br><br>
+
+<h3>As you would have already noticed that more number of control statements mean more complicated flow graph.
+<br><br>
+That is the end of this simulation. Thank you
+</h3>
+
+<script>
+function sol1() {
+  var x = document.getElementById("solution1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } 
+}
+</script>
+
+<script>
+function sol2() {
+  var x = document.getElementById("solution2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  }
+}
+function checkvertex1() {
+  if(document.getElementById("vertexin1").value == "17")
+  {
+    document.getElementById("vertexchk1").innerHTML = "Your answer is correct";
+  }
+  else
+  {
+    document.getElementById("vertexchk1").innerHTML = "Your answer is incorrect";
+  }
+}
+
+function checkedge1() {
+  if(document.getElementById("edgein1").value == "23")
+  {
+    document.getElementById("edgechk1").innerHTML = "Your answer is correct";
+  }
+  else
+  {
+    document.getElementById("edgechk1").innerHTML = "Your answer is incorrect";
+  }
+}
+
+
+function checkvertex2() {
+  if(document.getElementById("vertexin2").value == "7")
+  {
+    document.getElementById("vertexchk2").innerHTML = "Your answer is correct";
+  }
+  else
+  {
+    document.getElementById("vertexchk2").innerHTML = "Your answer is incorrect";
+  }
+}
+
+function checkedge2() {
+  if(document.getElementById("edgein2").value == "8")
+  {
+    document.getElementById("edgechk2").innerHTML = "Your answer is correct";
+  }
+  else
+  {
+    document.getElementById("edgechk2").innerHTML = "Your answer is incorrect";
+  }
+}
+</script>
+
+</body>
+</html>
